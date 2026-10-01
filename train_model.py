@@ -12,6 +12,7 @@ from sklearn.metrics import accuracy_score, confusion_matrix
 
 # Load dataset
 data = pd.read_csv("customer_churn_raw_50_samples (1).csv")
+data = data.dropna()
 
 # Remove duplicate rows
 data = data.drop_duplicates()
