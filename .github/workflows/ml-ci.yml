@@ -29,3 +29,6 @@ jobs:
 
       - name: Run tests
         run: pytest test_ml_pipeline.py
+
+      - name: Run quality gate
+        run: python quality_gate.py
