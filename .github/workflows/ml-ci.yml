@@ -33,11 +33,18 @@ jobs:
       - name: Run quality gate
         run: python quality_gate.py
 
+      - name: Check missing artifact
+        run: |
+          if [ ! -f "wrong_model.pkl" ]; then
+            echo "ERROR: Expected artifact file is missing"
+            exit 1
+          fi
+
       - name: Upload ML artifacts
         uses: actions/upload-artifact@v4
         with:
           name: customer-churn-ml-artifacts
           path: |
             wrong_model.pkl
-            if-no-files-found: error
+          if-no-files-found: error
           retention-days: 7
