@@ -32,7 +32,28 @@ jobs:
 
       - name: Run quality gate
         run: python quality_gate.py
+      - name: Run prediction application tests
+        run: python -m unittest test_app.py -v
 
+      - name: Prepare release candidate
+        run: |
+          mkdir -p release_candidate
+          cp app.py release_candidate/
+          cp customer_churn_model.pkl release_candidate/
+          cp metrics.json release_candidate/
+          cp requirements.txt release_candidate/
+          printf "Customer Churn Prediction ML Application
+          Run: python app.py
+          Endpoint: POST /predict
+          " > release_candidate/DEPLOYMENT.txt
+
+      - name: Upload release candidate
+        uses: actions/upload-artifact@v4
+        with:
+          name: customer-churn-ml-release
+          path: release_candidate/
+          if-no-files-found: error
+          retention-days: 7
       - name: Upload ML artifacts
         uses: actions/upload-artifact@v4
         with:
