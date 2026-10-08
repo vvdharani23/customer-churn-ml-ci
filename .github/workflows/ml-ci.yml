@@ -42,10 +42,9 @@ jobs:
           cp customer_churn_model.pkl release_candidate/
           cp metrics.json release_candidate/
           cp requirements.txt release_candidate/
-          printf "Customer Churn Prediction ML Application
-          Run: python app.py
-          Endpoint: POST /predict
-          " > release_candidate/DEPLOYMENT.txt
+          cp Dockerfile release_candidate/
+          cp .dockerignore release_candidate/
+          printf "Customer Churn Prediction ML Application\nRun: python app.py\nEndpoint: POST /predict\n" > release_candidate/DEPLOYMENT.txt
 
       - name: Upload release candidate
         uses: actions/upload-artifact@v4
