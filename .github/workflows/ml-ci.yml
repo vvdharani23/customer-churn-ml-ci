@@ -39,4 +39,5 @@ jobs:
           name: customer-churn-ml-artifacts
           path: |
             wrong_model.pkl
+            if-no-files-found: error
           retention-days: 7
