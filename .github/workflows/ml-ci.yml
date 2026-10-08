@@ -2,9 +2,9 @@ name: Customer Churn ML CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   test:
@@ -34,12 +34,11 @@ jobs:
         run: python quality_gate.py
 
       - name: Upload ML artifacts
-      uses: actions/upload-artifact@v7
-      with:
-        name: customer-churn-ml-artifacts
-        path: |
-          customer_churn_model.pkl
-          metrics.json
-          customer_churn_raw_50_samples (1).csv
-        if-no-files-found: error
-        retention-days: 7
+        uses: actions/upload-artifact@v4
+        with:
+          name: customer-churn-ml-artifacts
+          path: |
+            customer_churn_model.pkl
+            metrics.json
+            customer_churn_raw_50_samples (1).csv
+          retention-days: 7
