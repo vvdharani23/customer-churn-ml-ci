@@ -32,3 +32,14 @@ jobs:
 
       - name: Run quality gate
         run: python quality_gate.py
+
+      - name: Upload ML artifacts
+      uses: actions/upload-artifact@v7
+      with:
+        name: customer-churn-ml-artifacts
+        path: |
+          customer_churn_model.pkl
+          metrics.json
+          customer_churn_raw_50_samples (1).csv
+        if-no-files-found: error
+        retention-days: 7
