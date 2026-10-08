@@ -38,7 +38,7 @@ jobs:
         with:
           name: customer-churn-ml-artifacts
           path: |
-            customer_churn_model.pkl
+            wrong_model.pkl
             metrics.json
             customer_churn_raw_50_samples (1).csv
           retention-days: 7
