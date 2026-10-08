@@ -34,10 +34,10 @@ class TestCustomerChurnApplication(unittest.TestCase):
         )
 
         self.assertEqual(response.status_code, 200)
-        self.assertIn(
-            response.get_json()["prediction"],
-            ["Yes", "No"]
-        )
+        self.assertEqual(
+         response.get_json()["prediction"],
+         "INVALID"
+     )
 
     def test_high_risk_customer_prediction(self):
         response = self.client.post(
