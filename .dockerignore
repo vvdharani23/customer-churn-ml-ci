@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.git/
+.github/
+test_*.py
+customer_churn_raw_50_samples (1).csv
+release_candidate/
