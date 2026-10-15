@@ -1,4 +1,7 @@
 name: Customer Churn ML CI
+permissions:
+  contents: read
+  packages: write
 
 on:
   push:
