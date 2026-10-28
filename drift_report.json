@@ -1,0 +1,44 @@
+{
+    "reference_records": 52,
+    "current_records": 52,
+    "drift_threshold_percent": 10,
+    "results": {
+        "Age": {
+            "reference_mean": 61.804,
+            "current_mean": 61.804,
+            "drift_percent": 0.0,
+            "drift_detected": false
+        },
+        "TenureMonths": {
+            "reference_mean": 30.0,
+            "current_mean": 30.0,
+            "drift_percent": 0.0,
+            "drift_detected": false
+        },
+        "MonthlyCharges": {
+            "reference_mean": 84.218,
+            "current_mean": 126.328,
+            "drift_percent": 50.0,
+            "drift_detected": true
+        },
+        "TotalCharges": {
+            "reference_mean": 3892.796,
+            "current_mean": 3892.796,
+            "drift_percent": 0.0,
+            "drift_detected": false
+        },
+        "SupportCalls": {
+            "reference_mean": 3.745,
+            "current_mean": 3.745,
+            "drift_percent": 0.0,
+            "drift_detected": false
+        },
+        "SatisfactionScore": {
+            "reference_mean": 3.137,
+            "current_mean": 3.137,
+            "drift_percent": 0.0,
+            "drift_detected": false
+        }
+    },
+    "drift_detected": true
+}

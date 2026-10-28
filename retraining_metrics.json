@@ -1,0 +1,6 @@
+{
+    "accuracy": 0.7272727272727273,
+    "training_records": 41,
+    "testing_records": 11,
+    "model_file": "customer_churn_model_retrained.pkl"
+}
