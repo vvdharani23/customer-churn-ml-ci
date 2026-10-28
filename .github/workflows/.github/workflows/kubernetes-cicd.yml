@@ -1,0 +1,46 @@
+
+name: Customer Churn Kubernetes CD
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+    paths:
+      - "k8s/**"
+      - ".github/workflows/kubernetes-cicd.yml"
+
+permissions:
+  contents: read
+  packages: read
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check Kubernetes access
+        shell: powershell
+        run: |
+          kubectl config current-context
+          kubectl get deployment customer-churn-api
+          kubectl get pods
+
+      - name: Deploy Customer Churn image
+        shell: powershell
+        run: |
+          kubectl set image deployment/customer-churn-api customer-churn-api=ghcr.io/vvdharani23/customer-churn-ml:latest
+          kubectl rollout status deployment/customer-churn-api --timeout=180s
+
+      - name: Verify application
+        shell: powershell
+        run: |
+          $pod = kubectl get pods -l app=customer-churn-api -o json | ConvertFrom-Json
+          if ($pod.items.Count -eq 0) {
+            kubectl get pods
+            throw "No matching Customer Churn pods found."
+          }
+          kubectl get deployment customer-churn-api
+          kubectl get pods
