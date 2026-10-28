@@ -1,0 +1,53 @@
+CustomerID,Age,TenureMonths,MonthlyCharges,TotalCharges,Contract,InternetService,PaymentMethod,SupportCalls,SatisfactionScore,Churn
+C020,41.0,36.0,158.625,3789.67,Two year,Fiber optic,Mailed check,1.0,3.0,No
+C042,54.0,14.0,117.76500000000001,1109.34,Month-to-month,No,Electronic check,-3.0,1.0,No
+C048,35.0,16.0,171.855,1691.32,Two year,DSL,Electronic check,3.0,4.0,Yes
+C013,41.0,7.0,65.83500000000001,286.23,,DSL,Electronic check,3.0,1.0,Yes
+C044,24.0,60.0,57.36,2330.81,Month-to-month,,Mailed check,5.0,4.0,No
+C006,25.0,26.0,79.725,1265.17, month-to-month ,DSL,Mailed check,5.0,1.0,Yes
+C018,39.0,14.0,130.27499999999998,1093.58,Month-to-month,DSL,Mailed check,7.0,5.0,Yes
+C005,60.0,9.0,76.83,454.97,Two year,DSL,Credit card,8.0,3.0,Yes
+C004,,58.0,124.005,4227.38,Two year,Fiber optic,Mailed check,0.0,1.0,No
+C033,59.0,44.0,71.13,1866.2,One year,Fiber optic,Mailed check,0.0,4.0,No
+C014,53.0,44.0,138.87,4254.01,One year,Fiber optic,Mailed check,6.0,4.0,No
+C009,36.0,20.0,97.83,1235.66,Month-to-month,Fiber optic,Credit card,3.0,2.0,No
+C027,29.0,42.0,76.65,2084.28,Two year,Fiber optic,Bank transfer,2.0,3.0,No
+C007,38.0,53.0,61.050000000000004,2103.07,Month-to-month,Fiber optic,Bank transfer,2.0,5.0,No
+C035,33.0,10.0,1125.0,268.22,One year,DSL,Electronic check,4.0,5.0,Yes
+C005,60.0,9.0,76.83,454.97,Two year,DSL,Credit card,8.0,3.0,Yes
+C038,68.0,31.0,100.10999999999999,1779.11,Month-to-month,DSL,Bank transfer,8.0,3.0,Yes
+C025,38.0,6.0,132.39000000000001,484.88,Month-to-month,FIBER OPTIC,Mailed check,1.0,3.0,Yes
+C045,38.0,57.0,123.63,4828.59,One year,DSL,Cash,7.0,5.0,No
+C034,45.0,34.0,73.995,1927.67,One year,Satellite,Electronic check,4.0,1.0,No
+C050,42.0,18.0,136.5,1623.41,Month-to-month,Fiber optic,Mailed check,7.0,5.0,No
+C016,41.0,47.0,123.85499999999999,3709.15,Unknown,Fiber optic,Electronic check,8.0,4.0,No
+C010,40.0,28.0,93.765,1551.84,Month-to-month,Fiber optic,Bank transfer,2.0,2.0,Yes
+C017,20.0,35.0,169.5,3723.37,Two year,fiber optic,Mailed check,0.0,1.0,Yes
+C031,66.0,18.0,158.47500000000002,2013.69,Month-to-month,Fiber optic,Credit card,0.0,5.0,Yes
+C037,64.0,14.0,53.295,484.14,Month-to-month,Fiber optic,Bank transfer,,5.0,Yes
+C026,50.0,54.0,-68.25,4459.58,Two year,Fiber optic,Mailed check,6.0,5.0,No
+C012,28.0,60.0,39.51,99999.0,Two year,Fiber optic,Mailed check,2.0,5.0,No
+C001,56.0,60.0,114.405,5098.53,Two year,Fiber optic,Credit card,1.0,4.0,Yes
+C047,56.0,21.0,66.435,893.72,Month-to-month,Fiber optic,Mailed check,7.0,9.0,Yes
+C028,39.0,4.0,117.47999999999999,272.39,Two year,Fiber optic,,6.0,3.0,Yes
+C032,44.0,26.0,140.34,,One year,Fiber optic,Bank transfer,1.0,1.0,No
+C040,69.0,15.0,165.14999999999998,1718.06,One year,DSL,CreditCard,2.0,3.0,Yes
+C030,42.0,29.0,175.965,3143.65,Month-to-month,No, electronic check ,3.0,2.0,No
+C046,26.0,40.0,114.42,2667.53,Month-to-month,Fiber optic,Bank transfer,0.0,5.0,No
+C002,69.0,14.0,121.10999999999999,1172.53,Month-to-month,Fiber optic,Credit card,5.0,4.0,Yes
+C022,47.0,40.0,51.09,1268.15,One year,Fiber optic,Credit card,0.0,1.0,Yes
+C003,46.0,50.0,175.05,5477.26,Two year,DSL,Electronic check,5.0,3.0,Yes
+C041,20.0,8.0,105.24,591.71,Month-to-month,DSL,Bank transfer,2.0,1.0,Yes
+C036,32.0,36.0,138.76500000000001,3806.55,Two year,Fiber optic,Electronic check,6.0,4.0,No
+C024,19.0,2.0,132.81,159.46,Month-to-month,DSL,Mailed check,8.0,3.0,Yes
+C049,21.0,45.0,122.83500000000001,-100.0,Month-to-month,Fiber optic,Electronic check,0.0,1.0,No
+C011,28.0,47.0,79.32000000000001,2378.21,MONTH-TO-MONTH,No,Credit card,2.0,3.0,Yes
+C023,55.0,4.0,90.345,222.43,One year,DSL,Electronic check,8.0,,Yes
+C019,19.0,,167.88,1922.1,Month-to-month,No,Mailed check,6.0,4.0,Yes
+C022,47.0,40.0,51.09,1268.15,One year,Fiber optic,Credit card,0.0,1.0,Yes
+C021,5.0,50.0,101.55000000000001,3580.42,One year,Fiber optic,Bank transfer,7.0,1.0,No
+C008,56.0,2.0,,59.07,Two year,Fiber optic,Credit card,3.0,2.0,Yes
+C043,68.0,23.0,136.605,2061.8,Month-to-month,Fiber optic,Electronic check,7.0,4.0,No
+C015,999.0,8.0,150.105,680.6,Month-to-month,DSL,Electronic check,3.0,1.0,Yes
+C029,61.0,54.0,92.07000000000001,3069.82,Two year,DSL,Mailed check,8.0,3.0,No
+C039,61.0,48.0,66.24,2021.16,Month-to-month,DSL,Electronic check,2.0,4.0,No
