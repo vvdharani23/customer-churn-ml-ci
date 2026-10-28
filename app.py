@@ -1,14 +1,15 @@
 
 import logging
+import time
 from pathlib import Path
 
 import joblib
 import pandas as pd
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, Response
+from prometheus_client import Counter, Histogram, Gauge, generate_latest, CONTENT_TYPE_LATEST
 
 app = Flask(__name__)
 
-# Configure application logging
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s %(levelname)s %(name)s: %(message)s"
@@ -29,9 +30,42 @@ FEATURES = [
     "SatisfactionScore"
 ]
 
+# Prometheus metrics
+REQUEST_COUNT = Counter(
+    "churn_api_requests_total",
+    "Total API requests",
+    ["method", "endpoint", "status"]
+)
+
+REQUEST_LATENCY = Histogram(
+    "churn_api_request_duration_seconds",
+    "API request duration in seconds",
+    ["endpoint"]
+)
+
+PREDICTION_COUNT = Counter(
+    "churn_predictions_total",
+    "Total successful churn predictions",
+    ["prediction"]
+)
+
+ERROR_COUNT = Counter(
+    "churn_api_errors_total",
+    "Total API errors",
+    ["endpoint", "status"]
+)
+
+MODEL_STATUS = Gauge(
+    "churn_model_status",
+    "Model availability: 1 available, 0 unavailable"
+)
+
+request_start_times = {}
+
 
 @app.before_request
-def log_request():
+def before_request():
+    request_start_times[id(request._get_current_object())] = time.time()
     logger.info(
         "Request received: method=%s path=%s",
         request.method,
@@ -40,12 +74,25 @@ def log_request():
 
 
 @app.after_request
-def log_response(response):
+def after_request(response):
+    endpoint = request.path
+    status = str(response.status_code)
+
+    REQUEST_COUNT.labels(
+        request.method, endpoint, status
+    ).inc()
+
+    start = request_start_times.pop(
+        id(request._get_current_object()), time.time()
+    )
+    REQUEST_LATENCY.labels(endpoint).observe(time.time() - start)
+
+    if response.status_code >= 400:
+        ERROR_COUNT.labels(endpoint, status).inc()
+
     logger.info(
         "Request completed: method=%s path=%s status=%s",
-        request.method,
-        request.path,
-        response.status_code
+        request.method, endpoint, status
     )
     return response
 
@@ -60,12 +107,15 @@ def handle_unexpected_error(error):
 
 def load_model():
     if not MODEL_PATH.exists():
+        MODEL_STATUS.set(0)
         raise FileNotFoundError(
             "customer_churn_model.pkl was not found. "
             "Run the training pipeline first."
         )
 
-    return joblib.load(MODEL_PATH)
+    model = joblib.load(MODEL_PATH)
+    MODEL_STATUS.set(1)
+    return model
 
 
 @app.get("/")
@@ -74,6 +124,14 @@ def health_check():
         "status": "ok",
         "service": "customer-churn-prediction"
     })
+
+
+@app.get("/metrics")
+def metrics():
+    return Response(
+        generate_latest(),
+        mimetype=CONTENT_TYPE_LATEST
+    )
 
 
 @app.post("/predict")
@@ -111,6 +169,7 @@ def predict():
         prediction_code = int(model.predict(sample)[0])
         prediction = "Yes" if prediction_code == 1 else "No"
 
+        PREDICTION_COUNT.labels(prediction).inc()
         logger.info("Customer churn prediction completed successfully")
 
         return jsonify({
